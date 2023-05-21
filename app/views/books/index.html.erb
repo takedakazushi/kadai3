@@ -1,0 +1,63 @@
+<div class="container px-5 px-sm-0" >
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <%= image_tag @user.get_profile_image(100,100) %>
+      <table class="table">
+       <tbody>
+      <tr></tr>
+      <tr>
+        <th>name</th>
+        <th><%= @user.name%></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th></th>
+      </tr>
+    </tbody>
+      </table>
+      <div class="row">
+        <%=link_to  edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block"%>
+      </div>
+    </div>
+    def get_profile_image(width, height)
+    unless profile_image.attached?
+    file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
+    profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+  profile_image.variant(resize_to_limit: [width, height]).processed
+    end
+  </div>
+
+
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead
+  <% @books.each do |book| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <%= link_to books_path(book.id) do %>
+      <%= image_tag book.get_image, class:"card-img-top"; %>
+    <% end %>>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <%= link_to(book_path(book.id), class:"text-dark") do %>
+              <strong><i class="far fa-flag"></i><span> <%= book.shop_name %></span></strong>
+            <% end %>
+          </p>
+          <p class="card-text">説明：<%= book.caption %></p>
+          <span><i class="fas fa-user"></i> By <%= book.user.name %> ｜ </span>
+          <span><%= link_to "#{book.post_comments.count} コメント", book_path(book.id), class:"text-dark" %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
