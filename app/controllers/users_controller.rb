@@ -6,11 +6,16 @@ class UsersController < ApplicationController
 
   def edit
    @user = User.find(params[:id])
+   @User = @user.users/edit
   end
   def update
-    @user = ユーザーの取得
-    @user.ユーザーのアップデート
-    redirect_to ユーザーの詳細ページへのパス  
+    flash[:notice] = "Book was successfully created"
+    @user = User.find(params[id])
+    if @user.update(user_params)
+       redirect_to user_path(@user.id)
+    else
+       render :edit
+    end
   end
 
 

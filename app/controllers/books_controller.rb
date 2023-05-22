@@ -10,9 +10,12 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
+   if @book.save
     redirect_to books_path
-  end
+   else
+    render :new
+   end
+  end 
 
   def show
     @book = Book.all
@@ -40,4 +43,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:shop_name, :image, :caption)
   end
-end
+  end
