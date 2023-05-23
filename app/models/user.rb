@@ -12,4 +12,6 @@ def get_profile_image(width, height)
   end
   profile_image.variant(resize_to_limit: [width, height]).processed
 end
-end 
+ validates :name, {length: {in: 2..20} }
+ validates :introduction, {length: {maximum:50} }
+end

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
     @books = @user.books
@@ -6,7 +7,10 @@ class UsersController < ApplicationController
 
   def edit
    @user = User.find(params[:id])
-   @User = @user.users/edit
+  end
+  def index
+    @user = current_user
+    @users = User.all
   end
   def update
     flash[:notice] = "Book was successfully created"

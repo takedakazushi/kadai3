@@ -23,16 +23,16 @@
             <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to 'Home', user_path(current_user.id), class: 'nav-link text-dark' %>
-            </li>
+            </li><i class="fas fa-home"></i>
              <li class="nav-item">
-              <%= link_to 'Users', user_path(current_user.id), class: 'nav-link text-dark' %>
-            </li>
+              <%= link_to 'Users',  users_path, class: 'nav-link text-dark' %>
+            </li><i class="fas fa-user"></i>
             <li class="nav-item">
               <%= link_to 'Books', books_path, class: 'nav-link text-dark' %>
-            </li>
+            </li><i class="fas fa-book"></i>
             <li class="nav-item">
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
+            </li><i class="fas fa-sign-out-alt"></i>
             <% else %>
             <li class="nav-item">
               <%= link_to "Home", root_path, class: 'nav-link text-dark' %>
