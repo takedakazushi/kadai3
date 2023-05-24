@@ -15,7 +15,7 @@
         <div class="container">
           <a class="navbar-brand p-3" href="/"> Bookers </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -36,19 +36,18 @@
             <% else %>
             <li class="nav-item">
               <%= link_to "Home", root_path, class: 'nav-link text-dark' %>
-            </li>
-            <i class="far fa-home"></i>
+             </li><i class="fas fa-home"></i>
             <li class="nav-item">
-              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
-              <i class="far fa-stomach"></i>
-            </li>
+              <%= link_to "About", home_about_path, class: 'nav-link text-dark' %>
+            </li><i class="fas fa-address-card"></i>
             <li class="nav-item">
             <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
             <i class="fas fa-user-plus"></i>
             </li>
              <li class="nav-item">
               <%= link_to "Log in", new_user_session_path, class: 'nav-link text-dark' %>
-              <i class="fas fa-sign-in"></i>
+              <i class="fas fa-sign-in-alt"></i>
+            
             </li>
             <% end %>
             </ul>
