@@ -1,4 +1,5 @@
 <main>
+  
         <p id="notice"></p>
         <div class="container px-5 px-sm-0">
   <div class="row">
@@ -14,6 +15,7 @@
   <tr>
     <div></div>
 	  <th>introduction</th>
+	  <th></th>
 	  <th></th>
   </tr>
 </tbody></table>
@@ -32,19 +34,7 @@
  <h4></h4>
  <%= f.submit "Create Book" %>
 <% end %>
-      <form _with model: @books= do |f| %> <input type="hidden" name="authenticity_token" value="" autocomplete="off">
-  <div class="form-group">
-    <label for="book_title">Title</label>
-    <input class="form-control book_title" type="text" name="book[title]" id="book_title">
-  </div>
-  <div class="form-group">
-    <label for="book_opinion">Opinion</label>
-    <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
-  </div>
-  <div class="form-group">
-    <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
-  </div>
-</form>
+     
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>

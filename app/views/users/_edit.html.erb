@@ -1,0 +1,30 @@
+
+ <p id="notice"></p>
+      <h2>User info</h2>
+  <table>
+  <tbody>
+  <tr>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+  </tr>
+  <tr>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+  </tr>
+</tbody>
+</table>
+
+  <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block" do %>
+  <i class="fas fa-user-cog"></i>
+  <% end %>
+  <h2>New book</h2>
+  <%= form_with model: book do |f| %>
+ <h4>Title</h4>
+ <%= f.text_field :title %>
+ <h4>Opinion</h4>
+ <%= f.text_area :body %>
+ <h4></h4>
+ <%= f.submit "Create Book" %>
+<% end %>
