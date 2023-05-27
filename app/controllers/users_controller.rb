@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user,only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
     @books = @user.books
@@ -8,17 +9,19 @@ class UsersController < ApplicationController
   end
 
   def edit
-   @user = User.find(params[:id])
-
+    @user = User.find(params[:id])
   end
+
   def index
     @user = current_user
     @users = User.all
+    @book = Book.new
   end
   def update
-    flash[:notice] = "Book was successfully created"
+    user = User.find(params[:id])
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:notice] = "Book was successfully created"
        redirect_to user_path(@user.id)
     else
        render :edit
@@ -27,6 +30,7 @@ class UsersController < ApplicationController
 
 
   private
+
   def correct_user
      @user = User.find(params[:id])
      if @user != current_user
@@ -36,5 +40,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
+  end
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to books_path
+    end
   end
 end
